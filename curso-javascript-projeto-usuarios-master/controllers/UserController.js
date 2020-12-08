@@ -4,6 +4,15 @@ class UserController{
         this.formEl = document.getElementById(formId);
     }
 
+    onSubmit(){
+        this.formEl.addEventListener("submit", function(event){
+            event.preventDefault();
+            this.getValues();
+        })
+    }
+
+
+
 
     getValues(){
         let user = {}
