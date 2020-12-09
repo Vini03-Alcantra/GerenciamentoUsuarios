@@ -8,11 +8,13 @@ class UserController{
     }
 
     onSubmit(){
-        this.formEl.addEventListener("submit", function(event){
-            event.preventDefault();            
+        this.formEl.addEventListener("submit", event =>{
+            event.preventDefault()
             this.addLine(this.getValues())
-        })
-    }//fechando onSubmit
+        }
+        )}
+        
+    //fechando onSubmit
 
 
 
