@@ -75,7 +75,8 @@ class UserController{
 
 
     addLine(dataUser){
-        this.tableEl.innerHTML = `
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
         <tr>
             <td><img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></td>
             <td>${dataUser.name}</td>
@@ -88,6 +89,8 @@ class UserController{
             </td>
         </tr>                                    
         `;
+
+        this.tableEl.appendChild(tr)
     
     }
     
