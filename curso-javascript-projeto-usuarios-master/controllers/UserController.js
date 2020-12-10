@@ -7,6 +7,7 @@ class UserController{
 
         this.onSubmit();
         this.onEdit()
+        this.selectAll()
     }
 
     onEdit(){
@@ -72,6 +73,7 @@ class UserController{
             this.getPhoto(this.formEl).then(  
                 (content) => {
                     values.photo = content;
+                    this.insert(values)
                     this.addLine(values);
                     this.formEl.reset();
                     btn.disabled = false;
@@ -158,7 +160,7 @@ class UserController{
         users.forEach(dataUser =>{
             let user = new User();
 
-            user.loadFromJson(dataUser)
+            user.loadFromJSON(dataUser)
             this.addLine(user)
         })
     }
@@ -172,7 +174,7 @@ class UserController{
 
     addLine(dataUser){
         let tr = document.createElement('tr');
-        this.insert(dataUser)
+        
         tr.dataset.user = JSON.stringify(dataUser);
         tr.innerHTML = `
         <tr>
