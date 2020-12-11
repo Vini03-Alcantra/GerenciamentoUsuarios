@@ -36,9 +36,8 @@ class UserController{
 
                     let user = new User()
                     user.loadFromJSON(result)
-                    this.getTr(user, tr)
-
-                    
+                    user.save()
+                    this.getTr(user, tr)                    
                     this.updateCount()
                     btn.disabled = false
                     this.formUpdateEl.reset()
@@ -64,7 +63,7 @@ class UserController{
             this.getPhoto(this.formEl).then(  
                 (content) => {
                     values.photo = content;
-                    this.insert(values)
+                    values.save()
                     this.addLine(values);
                     this.formEl.reset();
                     btn.disabled = false;
@@ -154,14 +153,6 @@ class UserController{
             user.loadFromJSON(dataUser)
             this.addLine(user)
         })
-    }
-
-    insert(data){
-        let users = this.getUsersStorage()
-
-        users.push(data)
-        //sessionStorage.setItem("users", JSON.stringify(users))
-        localStorage.setItem("users", JSON.stringify(users))
     }
 
     addLine(dataUser){                
